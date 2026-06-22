@@ -70,3 +70,6 @@ Sazonalidade: Identificação clara de Payday Effects (dias de maior injeção d
 Fuga de Capital: Monitoramento da proporção entre o capital que entra (deposit) versus o que é drenado em operações físicas (withdrawal).
 
 Concentração de Risco: Visibilidade imediata de quais AccountIDs representam a maior fatia do volume transacional da instituição.
+
+<img width="1418" height="784" alt="backisbi" src="https://github.com/user-attachments/assets/be8eacd0-e559-4859-8f38-2ba5acf4ed8b" />
+
