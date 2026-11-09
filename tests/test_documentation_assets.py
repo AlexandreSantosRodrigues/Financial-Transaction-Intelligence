@@ -55,7 +55,7 @@ class DocumentationChecks(unittest.TestCase):
             if not page.exists():
                 continue
             content = page.read_text(encoding="utf-8")
-            for dest in re.findall(r"!?(?:\\[[^\\]]*\\])\\(([^)]+)\\)", content):
+            for dest in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", content):
                 dest = dest.split("#", 1)[0].split("?", 1)[0].strip()
                 if not dest or re.match(r"^(?:[a-z][a-z0-9+.-]*:|/)", dest, re.I):
                     continue
