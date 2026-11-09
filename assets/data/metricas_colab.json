@@ -1,0 +1,296 @@
+{
+  "meta": {
+    "titulo": "Financial Transaction Intelligence",
+    "origem": "Resultados de notebooks executados pelo usuário no Google Colab e compartilhados na conversa em 09/11/2026.",
+    "verificacao": "Valores transcritos das saídas apresentadas. A revisão aqui não equivale à reexecução independente dos dois CSVs completos.",
+    "unidade_banking": "INR",
+    "unidade_paysim": "Unidade monetária simulada; não converter nem somar com INR."
+  },
+  "banking": {
+    "dataset": "https://www.kaggle.com/datasets/belbino/indian-banking-transactions-20192024",
+    "registros_originais": 550000,
+    "transacoes_validas_2019_2023": 505980,
+    "clientes_distintos_2019_2023": 79866,
+    "janeiro_2024_descartado": 267,
+    "anos": [
+      {
+        "ano": 2019,
+        "volume_inr": 3007061000,
+        "transacoes": 101294,
+        "clientes": 57515,
+        "hhi": 2.257356,
+        "gini": 0.840867,
+        "top_1pct_fracao": 0.259619,
+        "top_10_fracao": 0.018103
+      },
+      {
+        "ano": 2020,
+        "volume_inr": 3035995000,
+        "transacoes": 101152,
+        "clientes": 57321,
+        "hhi": 2.332126,
+        "gini": 0.841821,
+        "top_1pct_fracao": 0.2631,
+        "top_10_fracao": 0.019854
+      },
+      {
+        "ano": 2021,
+        "volume_inr": 2990820000,
+        "transacoes": 101247,
+        "clientes": 57500,
+        "hhi": 2.158764,
+        "gini": 0.840172,
+        "top_1pct_fracao": 0.252815,
+        "top_10_fracao": 0.018162
+      },
+      {
+        "ano": 2022,
+        "volume_inr": 3061563000,
+        "transacoes": 101385,
+        "clientes": 57322,
+        "hhi": 2.655421,
+        "gini": 0.845133,
+        "top_1pct_fracao": 0.27577,
+        "top_10_fracao": 0.024461
+      },
+      {
+        "ano": 2023,
+        "volume_inr": 2986506000,
+        "transacoes": 100902,
+        "clientes": 57301,
+        "hhi": 2.415901,
+        "gini": 0.841742,
+        "top_1pct_fracao": 0.265484,
+        "top_10_fracao": 0.02108
+      }
+    ],
+    "abc_2023": {
+      "A": {
+        "clientes": 6900,
+        "volume_inr": 2389217000
+      },
+      "B": {
+        "clientes": 11321,
+        "volume_inr": 447963900
+      },
+      "C": {
+        "clientes": 39080,
+        "volume_inr": 149325000
+      }
+    },
+    "clusters": {
+      "0": {
+        "clientes": 51617,
+        "volume_inr_aproximado": 14138840000,
+        "ticket_mediano_inr": 19609.505714,
+        "recencia_mediana_dias": 151,
+        "transacoes_medianas": 7
+      },
+      "1": {
+        "clientes": 28249,
+        "volume_inr_aproximado": 943109500,
+        "ticket_mediano_inr": 3399.452,
+        "recencia_mediana_dias": 352,
+        "transacoes_medianas": 4
+      }
+    }
+  },
+  "forecast": {
+    "nota": "Modo rápido (FINANCE_BI_FAST_TEST=1), duas origens temporais, três passos por origem. Métricas preliminares.",
+    "wape_total": {
+      "naive_sazonal": 0.049357,
+      "arima": 0.062087,
+      "xgboost": 0.072354,
+      "sarima": 46730.897753
+    },
+    "wape_savings": {
+      "xgboost": 0.112315,
+      "naive_sazonal": 0.116746,
+      "arima": 0.119834,
+      "sarima": 0.13656
+    },
+    "previsto_2024": [
+      {
+        "mes": "2024-01",
+        "total_inr": 236356900,
+        "savings_inr": 104645400
+      },
+      {
+        "mes": "2024-02",
+        "total_inr": 234728900,
+        "savings_inr": 103239700
+      },
+      {
+        "mes": "2024-03",
+        "total_inr": 262449900,
+        "savings_inr": 101185300
+      }
+    ]
+  },
+  "paysim": {
+    "dataset": "https://www.kaggle.com/datasets/ealaxi/paysim1",
+    "transacoes": 6362620,
+    "fraudes": 8213,
+    "tipo_fraudes": {
+      "TRANSFER": {
+        "transacoes": 532909,
+        "fraudes": 4097
+      },
+      "CASH_OUT": {
+        "transacoes": 2237500,
+        "fraudes": 4116
+      },
+      "CASH_IN": {
+        "transacoes": 1399284,
+        "fraudes": 0
+      },
+      "DEBIT": {
+        "transacoes": 41432,
+        "fraudes": 0
+      },
+      "PAYMENT": {
+        "transacoes": 2151495,
+        "fraudes": 0
+      }
+    },
+    "divisao": {
+      "treino": {
+        "n": 6010937,
+        "fraudes": 5007
+      },
+      "validacao": {
+        "n": 228103,
+        "fraudes": 1552
+      },
+      "teste": {
+        "n": 123580,
+        "fraudes": 1654
+      }
+    },
+    "xgboost": {
+      "ap": 0.358007,
+      "roc_auc": 0.940776,
+      "precision": 0.302814,
+      "recall": 0.513906,
+      "f1": 0.38108,
+      "f2": 0.451024,
+      "tp": 850,
+      "fp": 1957,
+      "fn": 804,
+      "tn": 119969
+    },
+    "random_forest": {
+      "ap": 0.327944,
+      "roc_auc": 0.933751,
+      "precision": 0.284727,
+      "recall": 0.522975,
+      "f1": 0.368713,
+      "f2": 0.448001,
+      "tp": 865,
+      "fp": 2173,
+      "fn": 789,
+      "tn": 119753
+    },
+    "subgrupos_xgboost": [
+      {
+        "grupo": "fora do pico",
+        "n": 77421,
+        "fraudes": 1242,
+        "precision": 0.292109,
+        "recall": 0.619968
+      },
+      {
+        "grupo": "pico",
+        "n": 46159,
+        "fraudes": 412,
+        "precision": 0.467836,
+        "recall": 0.194175
+      }
+    ],
+    "shap_media_abs": {
+      "TRANSFER": 0.445321,
+      "PAYMENT": 0.41381,
+      "CASH_OUT": 0.378314,
+      "log_valor": 0.278878,
+      "CASH_IN": 0.272301,
+      "hora_seno": 0.251367,
+      "hora_cosseno": 0.234525,
+      "horario_pico": 0,
+      "DEBIT": 0
+    },
+    "observacao": "O notebook ainda seleciona o modelo final pela AP no conjunto de teste; revisar antes de conclusões definitivas."
+  },
+  "fluxo": {
+    "nota": "Série financeira 2019–2023. Valores de 2023 aproximados conforme tabelas arredondadas exibidas pelo Colab.",
+    "credit_2023_inr_milhoes": [
+      121.4778,
+      110.8635,
+      127.0699,
+      123.0289,
+      128.9769,
+      121.5345,
+      128.6562,
+      104.2874,
+      109.2548,
+      112.8871,
+      117.1407,
+      120.0919
+    ],
+    "debit_2023_inr_milhoes": [
+      114.8791,
+      123.8654,
+      135.38,
+      121.7634,
+      130.249,
+      139.5906,
+      147.6973,
+      130.595,
+      122.9173,
+      124.3638,
+      126.3547,
+      143.5812
+    ],
+    "wape_credit": {
+      "sarima": 0.068988,
+      "naive_sazonal": 0.071977,
+      "xgboost": 0.086178
+    },
+    "wape_debit": {
+      "naive_sazonal": 0.064949,
+      "xgboost": 0.071685,
+      "sarima": 0.784687
+    },
+    "projecoes": [
+      {
+        "mes": "2024-01",
+        "credito_inr": 120254800,
+        "debito_inr": 114879100,
+        "fluxo_liquido_inr": 5375697
+      },
+      {
+        "mes": "2024-02",
+        "credito_inr": 102780900,
+        "debito_inr": 123865400,
+        "fluxo_liquido_inr": -21084550
+      },
+      {
+        "mes": "2024-03",
+        "credito_inr": 121460900,
+        "debito_inr": 135380000,
+        "fluxo_liquido_inr": -13919080
+      }
+    ],
+    "anomalias_janela_avaliacao": [
+      {
+        "mes": "2022-12",
+        "volume_bruto_inr": 268673000,
+        "score": -0.018289
+      },
+      {
+        "mes": "2023-08",
+        "volume_bruto_inr": 234882400,
+        "score": -0.001517
+      }
+    ]
+  }
+}
