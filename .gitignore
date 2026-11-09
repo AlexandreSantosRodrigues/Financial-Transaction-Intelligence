@@ -1,0 +1,14 @@
+# Large external datasets and derived outputs
+/data/
+/outputs/
+*.csv
+*.csv.gz
+*.parquet
+*.zip
+*.pkl
+*.joblib
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.env
+.venv/
